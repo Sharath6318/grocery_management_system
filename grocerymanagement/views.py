@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 
 from grocerymanagement.serializers import UserSerializer, GrocerySerializer
 from grocerymanagement.models import GroceryItem
+from grocerymanagement.permissions import IsOwner
 
 
 class RegisterView(CreateAPIView):
@@ -21,8 +22,8 @@ class GroceryListCreateView(CreateAPIView, ListAPIView):
 
     serializer_class = GrocerySerializer
 
-    authentication_classes = [authentication.BasicAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [IsOwner]
 
     def perform_create(self, serializer):
         return serializer.save(owner = self.request.user)
@@ -34,15 +35,15 @@ class GroceryRetriveUpdateDeleteView(RetrieveAPIView, UpdateAPIView, DestroyAPIV
     
     serializer_class = GrocerySerializer
 
-    authentication_classes = [authentication.BasicAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [IsOwner]
 
     queryset = GroceryItem.objects.all()
 
 class GrocerySummaryView(APIView):
 
-    authentication_classes = [authentication.BasicAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [IsOwner]
 
     def get(self, request, *args, **kwargs):
 

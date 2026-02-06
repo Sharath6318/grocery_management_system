@@ -8,10 +8,19 @@ Content-Type: application/json
     "password" : "password@123"
 }
 
+### Generate Token
+POST http://127.0.0.1:8000/token/
+Content-Type: application/json
+
+{
+  "username" : "python",
+  "password" : "password@123"
+}
+
 ### api call for create grocery
 POST http://127.0.0.1:8000/grocery/
 Content-Type: application/json
-Authorization: Basic python:password@123
+Authorization: Token f7b6e6b632cb33a2bbb762ef549e5611c2f0e69c
 
   {
     "name": "Soft Drink",
@@ -24,17 +33,17 @@ Authorization: Basic python:password@123
 ### Api call for List Records
 GET http://127.0.0.1:8000/grocery/
 Accept: application/json
-Authorization: Basic python:password@123
+Authorization: Token f7b6e6b632cb33a2bbb762ef549e5611c2f0e69c
 
 ### Api call for Retrive Particular record
-GET http://127.0.0.1:8000/grocery/4/
+GET http://127.0.0.1:8000/grocery/3/
 Accept: application/json
-Authorization: Basic python:password@123
+Authorization: Token f7b6e6b632cb33a2bbb762ef549e5611c2f0e69c
 
 ###Api call for Update record
 PUT http://127.0.0.1:8000/grocery/2/
 Content-Type: application/json
-Authorization: Basic python:password@123
+Authorization: Token f7b6e6b632cb33a2bbb762ef549e5611c2f0e69c
 
 {
     "name": "Milk Packet",
@@ -47,9 +56,9 @@ Authorization: Basic python:password@123
 
 ### APi call for delete record
 DELETE http://127.0.0.1:8000/grocery/4/
-Authorization: Basic python:password@123
+Authorization: Token f7b6e6b632cb33a2bbb762ef549e5611c2f0e69c
 
 ### Api view for summary
 
 GET http://127.0.0.1:8000/summary/
-Authorization: Basic python:password@123
+Authorization: Token f7b6e6b632cb33a2bbb762ef549e5611c2f0e69c
