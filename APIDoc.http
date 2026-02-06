@@ -1,0 +1,55 @@
+### api call for signup
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "sharath",
+    "email" : "sharath12@gmail.com",
+    "password" : "password@123"
+}
+
+### api call for create grocery
+POST http://127.0.0.1:8000/grocery/
+Content-Type: application/json
+Authorization: Basic python:password@123
+
+  {
+    "name": "Soft Drink",
+    "category": "beverages",
+    "price": 40.00,
+    "quantity": 10,
+    "expiry_date": "2026-12-31"
+  }
+
+### Api call for List Records
+GET http://127.0.0.1:8000/grocery/
+Accept: application/json
+Authorization: Basic python:password@123
+
+### Api call for Retrive Particular record
+GET http://127.0.0.1:8000/grocery/4/
+Accept: application/json
+Authorization: Basic python:password@123
+
+###Api call for Update record
+PUT http://127.0.0.1:8000/grocery/2/
+Content-Type: application/json
+Authorization: Basic python:password@123
+
+{
+    "name": "Milk Packet",
+    "category": "dairy",
+    "price": "45.00",
+    "quantity": 4,
+    "expiry_date": "2026-02-20"
+}
+
+
+### APi call for delete record
+DELETE http://127.0.0.1:8000/grocery/4/
+Authorization: Basic python:password@123
+
+### Api view for summary
+
+GET http://127.0.0.1:8000/summary/
+Authorization: Basic python:password@123
